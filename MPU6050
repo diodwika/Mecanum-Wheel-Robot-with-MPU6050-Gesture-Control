@@ -1,0 +1,45 @@
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+void setup() {
+  Serial.begin(115200);
+  
+  Wire.begin();
+  mpu.initialize();
+  
+  // Verifikasi koneksi sensor
+  if(mpu.testConnection()){
+    Serial.println("MPU6050 connection successful");
+  }else{
+    Serial.println("MPU6050 connection failed");
+  }
+}
+
+void loop() {
+  // Membaca data sensor
+  mpu.getMotion6();
+  
+  // Mendapatkan nilai akselerasi dan kecepatan sudut
+  int16_t ax = mpu.getAccelerationX();
+  int16_t ay = mpu.getAccelerationY();
+  int16_t az = mpu.getAccelerationZ();
+  
+  int16_t gx = mpu.getRotationX();
+  int16_t gy = mpu.getRotationY();
+  int16_t gz = mpu.getRotationZ();
+  
+  // Menampilkan nilai pada Serial Monitor
+  Serial.print("Akselerasi:\t");
+  Serial.print("X = "); Serial.print(ax);
+  Serial.print("\tY = "); Serial.print(ay);
+  Serial.print("\tZ = "); Serial.println(az);
+
+  Serial.print("Kecepatan Sudut:\t");
+  Serial.print("X = "); Serial.print(gx);
+  Serial.print("\tY = "); Serial.print(gy);
+  Serial.print("\tZ = "); Serial.println(gz);
+  
+  delay(1000); // Delay 1 detik
+}
