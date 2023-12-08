@@ -1,2 +1,3 @@
 # Mecanum-Wheel-Robot-with-MPU6050-Gesture-Control
-This robot will be controlled by reading angles from the MPU6050 sensor, which will be connected to the transmitter and send its reading data to the receiver. The robot uses mecanum wheels to move along the x, y, and diagonal axes.
+This robotic system utilizes an MPU6050 sensor to capture angular data, transmitting this information from the transmitter to the receiver. The robot is equipped with mecanum wheels, affording movement along the x, y, and diagonal axes.
+In order to govern motor speed with precision, a PID (Proportional-Integral-Derivative) controller has been incorporated. The PID algorithm leverages feedback from the MPU6050 sensor to dynamically adjust motor speeds, ensuring optimal and stable robotic movement. This sophisticated control mechanism enables the robot to navigate seamlessly and respond adeptly to environmental changes.
